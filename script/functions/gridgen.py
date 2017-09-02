@@ -10,8 +10,8 @@ class AffineGridGenFunction(Function):
         self.lr = lr
         self.height, self.width = height, width
         self.grid = np.zeros( [self.height, self.width, 3], dtype=np.float32)
-        self.grid[:,:,0] = np.expand_dims(np.repeat(np.expand_dims(np.arange(-1, 1, 2.0/self.height), 0), repeats = self.width, axis = 0).T, 0)
-        self.grid[:,:,1] = np.expand_dims(np.repeat(np.expand_dims(np.arange(-1, 1, 2.0/self.width), 0), repeats = self.height, axis = 0), 0)
+        self.grid[:,:,0] = np.expand_dims(np.repeat(np.expand_dims(np.linspace(-1, 1, self.height), 0), repeats = self.width, axis = 0).T, 0)
+        self.grid[:,:,1] = np.expand_dims(np.repeat(np.expand_dims(np.linspace(-1, 1, self.width), 0), repeats = self.height, axis = 0), 0)
         self.grid[:,:,2] = np.ones([self.height, width])
         self.grid = torch.from_numpy(self.grid.astype(np.float32))
         #print(self.grid)
@@ -51,8 +51,8 @@ class CylinderGridGenFunction(Function):
         self.lr = lr
         self.height, self.width = height, width
         self.grid = np.zeros( [self.height, self.width, 3], dtype=np.float32)
-        self.grid[:,:,0] = np.expand_dims(np.repeat(np.expand_dims(np.arange(-1, 1, 2.0/self.height), 0), repeats = self.width, axis = 0).T, 0)
-        self.grid[:,:,1] = np.expand_dims(np.repeat(np.expand_dims(np.arange(-1, 1, 2.0/self.width), 0), repeats = self.height, axis = 0), 0)
+        self.grid[:,:,0] = np.expand_dims(np.repeat(np.expand_dims(np.linspace(-1, 1, self.height), 0), repeats = self.width, axis = 0).T, 0)
+        self.grid[:,:,1] = np.expand_dims(np.repeat(np.expand_dims(np.linspace(-1, 1, self.width), 0), repeats = self.height, axis = 0), 0)
         self.grid[:,:,2] = np.ones([self.height, width])
         self.grid = torch.from_numpy(self.grid.astype(np.float32))
         #print self.grid
